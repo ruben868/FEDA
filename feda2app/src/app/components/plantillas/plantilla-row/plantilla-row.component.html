@@ -1,0 +1,26 @@
+<div>
+  <span class="title periodo-title">  TIPO DE INFORMACIÓN </span>
+  <span class="small-title">{{this.plantilla.base}}</span>
+</div>
+
+<div class="estatus">
+  <span class="title"> PLANTILLA </span>
+  <span class="small-title" >{{this.plantilla.archivo}}</span>
+</div>
+
+<div>
+  <span class="title"> VERSION </span>
+  <span class="small-title" >{{this.plantilla.version}}</span>
+</div>
+
+<div>
+  <span class="title"> FECHA DE CRAECIÓN </span>
+  <span>{{ this.plantilla.fechaCreacion | date: 'dd/MM/yyyy'}}</span>
+</div>
+
+<div>
+  <span class="title">DESCARGAR</span>
+  <button mat-icon-button color="accent" aria-label="Actualizar" (click)="this.onDescargarArchivo()">
+    <mat-icon>get_app</mat-icon>
+  </button>
+</div>

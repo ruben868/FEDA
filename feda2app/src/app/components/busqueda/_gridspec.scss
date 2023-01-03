@@ -1,0 +1,21 @@
+
+
+
+$fe-estatus: 90px;
+$fe-fecha: 150px;
+
+$col-periodo-semana-h: 65px;
+$col-periodo-fechas-h: 100px;
+$col-periodo: minmax($col-periodo-semana-h + $col-periodo-fechas-h, 1fr);
+$col-fechalimite: minmax(150px, 1fr);
+$col-formatoelectronico: minmax($fe-estatus + $fe-fecha, 1fr);
+$col-servicioweb: minmax(150px, 1fr);
+
+$row-title-h: 15px;
+$row-data01-h: 40px;
+$row-data02-h: 0px;
+$row-height: $row-title-h + $row-data01-h + $row-data02-h;
+
+$row-title-font: normal normal small-caps bold 8pt arial;
+
+

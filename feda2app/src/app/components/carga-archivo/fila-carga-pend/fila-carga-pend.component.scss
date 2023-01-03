@@ -1,0 +1,193 @@
+@import 'src/app/components/carga-archivo/gridspec';
+
+:host {
+  .main-cont {
+    display: grid;
+    grid-template-columns:
+      $col-periodo
+      $col-fechalimite
+      $col-formatoelectronico
+      $col-servicioweb
+  ;
+    grid-template-rows: $row-title-h $row-data01-h;
+    height: $row-height;
+    border-bottom: 1px gainsboro solid  ;
+
+    &:hover {
+      -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+      box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+      cursor: pointer;
+    }
+  }
+
+}
+
+.periodo-grid {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: $col-periodo-semana-h minmax($col-periodo-fechas-h, 1fr);
+  grid-template-rows: $row-data01-h/2 $row-data01-h/2;
+
+  .week {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: center;
+  }
+}
+
+.fe-grid {
+  grid-column: 3;
+  grid-row: 2;
+
+  display: grid;
+  grid-template-columns: $fe-estatus minmax($fe-fecha, 1fr);
+
+  .estatus {
+    width: $fe-estatus - 10px;
+    display: block;
+    font-size: 10pt;
+    align-self: center;
+    text-align: center;
+    color: gainsboro;
+  }
+
+  .fecha {
+    align-self: center;
+  }
+}
+
+.estatus-pendiente {
+  background-color: gray;
+}
+.estatus-cargando {
+  background-color: #9a7141;
+}
+.estatus-finalizado {
+  background-color: darkgreen;
+}
+
+
+//:host{
+//  .main-cont {
+//    overflow: hidden;
+//    height: $row-height;
+//    display: grid;
+//    grid-template-columns:
+//      $col-01
+//      $col-02
+//      $col-03
+//      $col-04
+//      $col-05
+//      //minmax(auto, 50px)
+//    ;
+//    border-bottom: 1px gainsboro solid  ;
+//    &:hover {
+//      -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+//      -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+//      box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+//      cursor: pointer;
+//    }
+//
+//    div {
+//      display: grid;
+//      grid-template-rows: minmax(0, auto) minmax(0, auto);
+//
+//      .title {
+//        grid: 1 / -1;
+//      }
+//
+//      .carga-estatus {
+//        width: 90px;
+//      }
+//
+//      .formato-electronico {
+//        display: grid;
+//        grid-template-rows: minmax(0, auto) minmax(0, auto);
+//        grid-template-columns: $fe-estatus $fe-fecha;
+//
+//        .estatus {
+//          width: $fe-estatus;
+//        }
+//
+//        .estatus {
+//          width: $fe-estatus;
+//        }
+//      }
+//    }
+//
+//
+//
+//    .estatus-fin {
+//      background-color: darkgreen;
+//      color: white;
+//      font-size: 10pt;
+//      padding: 2px;
+//    }
+//
+//    .estatus-cargando {
+//      background-color: #9a7141;
+//      color: white;
+//      font-size: 10pt;
+//      padding: 2px;
+//    }
+//
+//
+//    .estatus-pend-ontime {
+//      background-color: gray;
+//      color: white;
+//      font-size: 10pt;
+//      padding: 2px;
+//    }
+//
+//    .estatus-pend-overtime {
+//      background-color: darkred;
+//      color: white;
+//    }
+//
+//    .splitcell {
+//      display: grid;
+//      grid-template-columns:
+//        minmax(auto, 60px)
+//        minmax(0, auto)
+//    ;
+//      grid-template-rows:
+//        minmax(0, auto)
+//        minmax(0, auto)
+//    ;
+//
+//      .semana {
+//        grid-row: 1 / span 2;
+//      }
+//    }
+//  }
+//}
+
+.cell-title {
+  font: $row-title-font;
+  color: gray;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 8pt;
+  font-family: Arial;
+  color: gray;
+}
+
+.big-title {
+  font-weight: bold;
+  font-size: 21pt;
+  font-family: Arial;
+}
+
+.small-title {
+  font-size: 8pt;
+  font-family: Arial;
+  align-self: center;
+}
+
+.periodo-title {
+  align-self: center;
+}

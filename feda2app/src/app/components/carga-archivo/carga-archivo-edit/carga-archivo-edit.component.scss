@@ -1,0 +1,129 @@
+@import 'src/assets/variables';
+
+$card-width: 600px;
+
+:host {
+  @extend %main-content-grid;
+
+  .action-bar {
+    @extend %main-content-actionbar;
+
+    .title {
+      @extend %action-bar-title;
+      align-self: center;
+    }
+
+    .actions {
+      display: flex;
+    }
+  }
+
+  .main-pane {
+    @extend %main-content-pane;
+    grid-template-columns: minmax(auto, 1fr) auto minmax(auto, 1fr);
+    grid-template-rows: repeat(auto-fill, minmax(0, auto));
+    height: 100%;
+
+    .tab {
+      display: grid;
+      grid-column: 1 / -1;
+      //grid-template-columns: minmax(auto, 1fr) auto minmax(auto, 1fr);
+
+      .tab1 {
+        display: grid;
+        grid-template-columns: minmax(auto, 1fr);
+        //grid-template-columns: minmax(auto, 1fr) auto minmax(auto, 1fr);
+        //grid-template-rows: repeat(auto-fill, minmax(0, auto));
+      }
+    }
+  }
+}
+.mat-tab-body-content {
+  display: grid;
+  align-content: center;
+}
+
+.tab-cont-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0px, 1fr);
+  background-color: red;
+}
+
+.main-card {
+  align-self: center;
+  grid-column: 2;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: grid;
+  width: $card-width;
+  grid-template-columns: repeat(3, minmax(auto, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(0, auto));
+  align-content: center;
+  //grid-row-gap: 15px;
+
+
+  .info-title {
+    grid-column: 1;
+    align-self: center;
+    margin-top: 20px;
+  }
+  .info-data {
+    grid-column: 2/-1;
+    align-self: center;
+    margin-top: 20px;
+  }
+
+
+  //
+
+  //
+  //.estatus-finalizado {
+  //  grid-column: 1/-1;
+  //  display: grid;
+  //  height: 150px;
+  //  grid-template-columns: 80px minmax(auto, 1fr);
+  //  align-items: center;
+  //}
+}
+
+.two-row-info {
+  display: grid;
+  grid-template-rows: minmax(auto, 1fr);
+  //height: 50px;
+}
+
+.line-divider {
+  margin-top: 10px;
+  grid-column: 1/-1;
+  border-top: 1px solid $dorado01;
+}
+
+.title-loc-01 {
+  font-size: 14pt;
+  font-weight: bold;
+  color: $guin04;
+}
+
+.title-glo-02 {
+  @extend %title-02;
+}
+
+.estatus-cargando {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 80px minmax(auto, 1fr);
+  align-items: center;
+}
+
+.load-button {
+  display: grid;
+  grid-column: 1/-1;
+  justify-self: center;
+  align-self: center;
+}
+
+
+.mytab {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+}

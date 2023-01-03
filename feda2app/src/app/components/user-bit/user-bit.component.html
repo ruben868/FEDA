@@ -1,0 +1,17 @@
+
+<div class="main-content" [matMenuTriggerFor]="menu">
+  <div>
+    <span>{{this.userInfo.correo}}</span>
+  </div>
+  <div>
+    <span>{{this.userInfo.org}}</span>
+    -
+    <span>{{this.userInfo.entFedAbr}}</span>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu" >
+  <button mat-menu-item style="width: 215px;" (click)="this.onGoInfoAccount()" >Cuenta</button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="this.onCerrarSesion($event)" >Cerrar sesión</button>
+</mat-menu>

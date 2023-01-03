@@ -1,0 +1,150 @@
+<div class="action-bar">
+  <span class="title"> BÚSQUEDA </span>
+  <div class="actions">
+    <button
+      mat-icon-button
+      color="accent"
+      aria-label="Actualizar"
+      (click)="this.onActualizar()"
+      [disabled]="this.refreshButtonDisabled"
+    >
+    </button>
+  </div>
+</div>
+
+<form name="groupForm" #groupForm="ngForm" (ngSubmit)="paginator.firstPage(); busqueda(0,10)" class="main-cont" >
+  <section class="search__container">
+    <div class="result__name">
+      <label for="searchName"></label>
+      <input
+        type="text"
+        class="search__input"
+        placeholder="Busqueda..."
+        [(ngModel)]="busqu.busqueda"
+        name="busqueda"
+        [disabled]="this.busqu.infoUser === null || this.finder"
+      />
+
+          <!-- AGREGAR LAS COINCIDENCIAS -->
+      <div class="row-item" >
+        <p></p>
+        <font size="2" color="gray">Criterios de busqueda: </font>
+        <p></p>
+        <font size="2" color="gray">Número telefónico, Cuenta Bancaria, Número de Comprobante</font>
+        <p></p>
+        <span *ngIf="busqu.encontrados" class="title" style="grid-column: 4" size="3"> Coincidencias por Pagina: 
+          {{ busqu.encontrados }}
+          <p></p>
+          Total de Coincidencias:
+          {{ this.total }}
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <section *ngIf="find" class="result-cont">
+    <mat-card class="example-card" *ngFor="let d of data">
+      <div class="row-cont" *ngFor="let tel of d.Denuncia.NUMS_INFO">
+        <div class="row-item">
+          <span class="title" style="grid-column: 2"><font color="gray">TELÉFONO: </font></span>
+          <span
+            style="grid-column: 2; grid-row: 2; align-self: center"
+            class="subtitle"
+          >
+            {{ tel.TELEFONO }}
+          </span>
+        </div>
+
+        <div class="row-item" >
+          <span class="title" style="grid-column: 4"><font color="gray">IFT TIPO: </font></span>
+          <span
+            style="grid-column: 4; grid-row: 2; align-self: center"
+            class="subtitle"
+          >
+            {{ tel.IFT_TIPO_TELEFONO }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row-cont">
+        <div class="row-item">
+          <span class="title" style="grid-column: 2"><font color="gray">FECHA RECEPCIÓN DE DENUNCIA: </font></span>
+          <span
+            style="grid-column: 2; grid-row: 2; align-self: center"
+            class="subtitle"
+          >
+          {{ d.Denuncia.FECHA_DENUNCIA | date: "dd/MM/yyyy" }}
+          </span>
+        </div>
+
+        <div class="row-item" >
+          <span class="title" style="grid-column: 4"><font color="gray"> ENTREGO BIEN: </font></span>
+          <span
+            style="grid-column: 4; grid-row: 4; align-self: center"
+            class="subtitle"
+          >
+          {{ d.Denuncia.DES_BIEN_ENTREGADO }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row-cont">
+        <div class="row-item">
+          <span class="title" style="grid-column: 2"> <font color="gray">LUGAR DONDE OCURRIO EXTORSIÓN: </font></span>
+          <span
+            style="grid-column: 2; grid-row: 2; align-self: center"
+            class="subtitle"
+          >
+          {{ d.Denuncia.DES_ENT }} / {{ d.Denuncia.DES_MUN }}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="row-cont">
+        <div class="row-item">
+          <span class="title" style="grid-column: 2"> <font color="gray">MODUS: </font></span>
+          <span
+            style="grid-column: 2; grid-row: 2; align-self: center"
+            class="subtitle"
+          >
+          {{ d.Denuncia.DES_TIPO_EXTORSION }}
+          </span>
+        </div>
+      </div>
+
+      <mat-card-actions>
+        <button mat-button  (click)="accion1()" type="button" color="primary">Más Detalles</button>
+        <div fxFlex></div>
+      </mat-card-actions>
+
+
+      <div class="row-cont" *ngIf="ocultar1">
+        <div class="row-item">
+          <div class="grid">
+            <h3>Información</h3>
+            <mat-divider></mat-divider>
+          </div>
+
+          <!-- <mat-card-actions>
+            <button mat-button  (click)="exportAsXLSX()" type="button" color="primary">Exportar Excel</button>
+            <div fxFlex></div>
+          </mat-card-actions> -->
+    
+          <app-action-bar class="content"></app-action-bar>
+          <!-- <mat-card class="card1"> -->
+            <app-std-grid2 class="grid" style="height: 180px"
+            [stdColConfig]="this.gridIntesColConfig"
+            [sourceData]="transformData(d)"
+            [userColDefs]="this.gridIntesColDefs">
+      </app-std-grid2>
+        </div>
+
+      </div>
+
+    </mat-card>
+  </section>
+  <mat-paginator #paginator [length]="total" [pageSizeOptions]="[2, 4, 6, 10]" [pageSize]="10" (page)="changePage($event)" 
+  showFirstLastButtons></mat-paginator>
+</form>

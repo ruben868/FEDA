@@ -1,0 +1,133 @@
+:host{
+  padding-left: 5px;
+  height: 65px;
+  display: grid;
+  grid-column-gap: 5px;
+  column-gap: 5px;
+  grid-template-columns:
+    minmax(auto, 1fr)
+    minmax(auto, 1fr)
+    minmax(auto, 100px)
+    minmax(auto, 1fr)
+    80px
+;
+  overflow: hidden;
+  div {
+    display: grid;
+    row-gap: 5px;
+    grid-template-rows: minmax(0, auto) minmax(0, auto);
+  }
+  border-bottom: 1px gainsboro solid  ;
+  box-sizing: border-box;
+
+
+  &:hover {
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+  }
+
+
+  //.estatus {
+  //}
+  //
+  //.estatus-fin {
+  //  background-color: darkgreen;
+  //  color: white;
+  //  font-size: 10pt;
+  //  padding: 2px;
+  //}
+  //
+  //.estatus-cargando {
+  //  background-color: #9a7141;
+  //  color: white;
+  //  font-size: 10pt;
+  //  padding: 2px;
+  //}
+  //
+  //
+  //.estatus-pend-ontime {
+  //  background-color: gray;
+  //  color: white;
+  //  font-size: 10pt;
+  //  padding: 2px;
+  //}
+  //
+  //.estatus-pend-overtime {
+  //  background-color: darkred;
+  //  color: white;
+  //}
+  //
+  //.splitcell {
+  //  display: grid;
+  //  grid-template-columns:
+  //    minmax(auto, 60px)
+  //    minmax(0, auto)
+  //;
+  //  grid-template-rows:
+  //    minmax(0, auto)
+  //    minmax(0, auto)
+  //;
+  //
+  //  .semana {
+  //    grid-row: 1 / span 2;
+  //  }
+  //
+  //}
+}
+
+
+.title {
+  font-weight: bold;
+  font-size: 8pt;
+  font-family: Arial;
+  color: gray;
+
+}
+
+.big-title {
+  font-weight: bold;
+  font-size: 18pt;
+  font-family: Arial;
+}
+
+.small-title {
+  font-size: 10pt;
+  font-family: Arial;
+  //white-space: nowrap;
+
+  ////text-overflow: ellipsis;
+  //display: -webkit-box;
+  //-webkit-box-orient: vertical;
+  //
+  ///* to specify the number of lines you want the text to run through... */
+  //-webkit-line-clamp: 2;
+  //
+  ///* hide the overflowing text, i.e, texts that did not fit in to the box */
+  //overflow: hidden;
+
+
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 25px;
+  margin: 0 auto;
+  //font-size: 14px;
+  line-height: 1;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  align-self: center;
+}
+
+.periodo-title {
+  align-self: center;
+}

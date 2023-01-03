@@ -1,0 +1,119 @@
+<div class = "main-cont" (click)="this.goToEdit();">
+  <span class="cell-title week"> PERIODO </span>
+  <div class="periodo-grid">
+    <!--  <span class="cell-title week"> PERIODO </span>-->
+    <span class="week big-title"> {{this.pc.periodo.weekLabel}} </span>
+    <span class="small-title">del {{this.pc.periodo.start | date: 'dd/MM/yyyy'}}</span>
+    <span class="small-title">al {{this.pc.periodo.end | date: 'dd/MM/yyyy'}}</span>
+  </div>
+
+  <span class="title"> FECHA DE LÍMITE </span>
+  <span style="grid-column: 2; grid-row: 2; align-self: center;">{{ this.dateSrv.addDay(this.pc.periodo.end, 3) | date: 'dd/MM/yyyy'}}</span>
+
+  <span class="title" style="grid-column: 3;"> FORMATO ELECTRÓNICO </span>
+  <div class="fe-grid">
+    <!-- ESTATUS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!--  <div *ngIf="this.cargaEstatus === 'pendiente'">-->
+    <!--    <span class="estatus-pend-ontime estatus" >PENDIENTE</span>-->
+    <!--  </div>-->
+    <span
+        *ngIf="this.cargaEstatus === 'pendiente'"
+        class="estatus estatus-pendiente" >
+      PENDIENTE
+    </span>
+
+    <span
+        *ngIf="this.cargaEstatus === 'finalizado'"
+        class="estatus estatus-finalizado" >
+      ENTREGADO
+    </span>
+
+    <div *ngIf="this.cargaEstatus === 'cargando'">
+      <mat-progress-bar
+        class="example-margin"
+        [color]="'accent'"
+        [mode]="'indeterminate'">
+      </mat-progress-bar>
+      <span class="estatus-cargando estatus-cargando" >CARGANDO</span>
+    </div>
+
+    <!--  <div *ngIf="this.cargaEstatus === 'finalizado'">-->
+    <!--    <span class="estatus-fin estatus-finalizado" >ENTREGADO</span>-->
+    <!--  </div>-->
+    <!-- FECHA DE CARGA- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <span
+      class = "fecha"
+      *ngIf="this.hasFechaCarga">
+    {{ this.pc.carga.fechaCarga | date: 'dd/MM/yyyy'}}
+    </span>
+    <span
+        *ngIf="!this.hasFechaCarga">
+      -
+    </span>
+  </div>
+
+  <span class="title" style="grid-column: 4;"> SERVICIO WEB </span>
+  <span style="grid-column: 4; grid-row: 2; align-self: center;"> {{this.ws_registros}} registros </span>
+</div>
+
+<!--<div class="main-cont" (click)="this.goToEdit();">-->
+<!--  <div>-->
+<!--    <span class="title periodo-title">  PERIODO </span>-->
+<!--    <div class="splitcell">-->
+<!--      <span class="semana big-title"> {{this.pc.periodo.weekLabel}} </span>-->
+<!--      <span class="small-title">del {{this.pc.periodo.start | date: 'dd/MM/yyyy'}}</span>-->
+<!--      <span class="small-title">al {{this.pc.periodo.end | date: 'dd/MM/yyyy'}}</span>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <span class="title"> FECHA DE LÍMITE </span>-->
+<!--    <div>-->
+<!--      <span>{{ this.dateSrv.addDay(this.pc.periodo.end, 3) | date: 'dd/MM/yyyy'}}</span>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="formato-electronico">-->
+<!--    <span class="title" style="grid-column: 1 / -1;"> FORMATO ELETRÓNICO </span>-->
+
+<!--    <div class="estatus">-->
+<!--      &lt;!&ndash; ESTATUS &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--      <div *ngIf="this.cargaEstatus === 'pendiente'">-->
+<!--        <span class="estatus-pend-ontime carga-estatus" >PENDIENTE</span>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="this.cargaEstatus === 'finalizado'">-->
+<!--        <span class="estatus-fin carga-estatus" >ENTREGADO</span>-->
+<!--      </div>-->
+
+<!--      <div *ngIf="this.cargaEstatus === 'cargando'">-->
+<!--        <mat-progress-bar-->
+<!--          class="example-margin"-->
+<!--          [color]="'accent'"-->
+<!--          [mode]="'indeterminate'">-->
+<!--        </mat-progress-bar>-->
+<!--        <span class="estatus-cargando carga-estatus" >CARGANDO</span>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; FECHA DE CARGA -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--      <div>-->
+<!--&lt;!&ndash;        <span class="title"> FECHA DE CARGA </span>&ndash;&gt;-->
+<!--        <div *ngIf="this.hasFechaCarga">-->
+<!--          <span>{{ this.pc.carga.fechaCarga | date: 'dd/MM/yyyy'}}</span>-->
+<!--        </div>-->
+<!--        <div *ngIf="!this.hasFechaCarga">-->
+<!--          <span> - </span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+
+
+
+<!--&lt;!&ndash;  <div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <span>Boton de Carga</span>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--</div>-->
+

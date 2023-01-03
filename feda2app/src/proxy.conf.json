@@ -1,0 +1,35 @@
+
+{
+  "/feda2-app/api/*": {
+    "target": "http://localhost:4300",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/feda2-app": ""
+    }
+  },
+  "/feda2-auth/api/*": {
+    "target": "http://localhost:4500",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/feda2-auth": ""
+    }
+  },
+  "/feda2-auth/*": {
+    "target": "http://localhost:4400/feda2-auth",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/recibir/*": {
+    "target": "https://baseextorsion01.dfs.core.windows.net",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
+
+

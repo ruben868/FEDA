@@ -1,0 +1,139 @@
+//$guin01: #9D2449;
+//$guin02: #621132;
+//$guin03: #56242A;
+//$guin04: #4E232E;
+//$black01: #19191a;
+//$dorado01: #D4C19C;
+//$dorado02: #B38E5D;
+@import 'src/assets/variables';
+
+$top-bar-bg: $guin02;
+$top-bar-wd: 60px;
+
+
+:host{
+  display: grid;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+
+  background-image: url("src/assets/imgs/back-wings-01.png");
+  background-position: -100px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  grid-template-columns: 250px minmax(0, 1fr);
+  //grid-template-rows: $top-bar-wd 50px minmax(0, 1fr);
+  grid-template-rows: 0px $top-bar-wd minmax(0, 1fr);
+
+  .demo-banner {
+    text-align: center;
+    grid-column: 1 / span 2;
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+  }
+
+  .main-top {
+    grid-column: 1 / span 2;
+    //grid-row: 2;
+
+    display: grid;
+    background-color: $guin02;
+    grid-template-columns: 250px minmax(0, 1fr) minmax(0, auto);
+
+    .app-loader{
+      grid-column: 1 / span 3;
+      display: grid;
+      position: absolute;
+      z-index: 3;
+      width: 100vw;
+    }
+
+
+    .main-top-bg {
+      grid-column: 1 / span 3;
+      display: grid;
+      position: absolute;
+      z-index: 2;
+      width: 100vw;
+      height: $top-bar-wd;
+
+      background-image: url("src/assets/imgs/back-wings-01.png");
+      background-position: right 0px center;
+
+      background-repeat: no-repeat;
+      background-size: 101%;
+      opacity: 0.04;
+
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+    }
+
+    .main-top-content{
+      grid-column: 1 / span 3;
+      display: grid;
+      position: absolute;
+      z-index: 3;
+      width: 100vw;
+      height: $top-bar-wd;
+      grid-template-columns: 250px minmax(0, 1fr) minmax(0, auto);
+
+      .logo{
+        grid-column: 1;
+        grid-row: 1;
+
+        background-image: url("src/assets/imgs/logo-sesnsp-cni-v1.png");
+        background-position: 5px center;
+        background-repeat: no-repeat;
+        background-size: 85%;
+      }
+
+      .main-top-banner{
+        grid-column: 2;
+        border-bottom: 1px solid $guin04;
+
+        background-image: url("src/assets/imgs/base extorsion v1.png");
+        background-position: left 0px;
+        background-repeat: no-repeat;
+        background-size: 450px;
+
+        display: grid;
+      }
+    }
+
+    //&::after{
+    //  background-image: url("src/assets/imgs/back-wings-01.png");
+    //  background-position: center;
+    //  background-repeat: no-repeat;
+    //  background-size: cover;
+    //  opacity: 0.9;
+    //}
+
+
+
+
+
+
+  }
+
+  .side-nav{
+    border-right: 1px $dorado02 solid;
+  }
+
+  .main-content-pane{
+    display: grid;
+    grid-column: 2;
+    grid-row: 3 / span 4;
+    grid-template-columns: minmax(0,1fr);
+    grid-template-rows: 0px minmax(auto, 1fr);
+    overflow-y: auto;/*added*/
+    //background-color: gainsboro;
+  }
+}
+
+

@@ -1,0 +1,57 @@
+
+<div class="action-bar">
+<!--  <button mat-icon-button color="accent" aria-label="Actualizar" >-->
+<!--    <mat-icon>arrow_back_ios</mat-icon>-->
+<!--  </button>-->
+
+  <span class="title">
+  USUARIOS
+  </span>
+
+  <div class="actions">
+    <button mat-icon-button color="accent" aria-label="Actualizar" (click)="this.consult(0,3)"  >
+      <mat-icon>refresh</mat-icon>
+    </button>
+
+    <button mat-icon-button color="accent" aria-label="Nuevo" (click)="this.onNewUser()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="main-pane">
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="this.dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> Correo electrónico </th>
+        <td mat-cell *matCellDef="let element"> {{element.authInfo.mail}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Organización </th>
+        <td mat-cell *matCellDef="let element"> {{element.org.abr}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Área </th>
+        <td mat-cell *matCellDef="let element"> {{element.org.area.nom}} </td>
+      </ng-container>
+
+<!--      &lt;!&ndash; Symbol Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="symbol">-->
+<!--        <th mat-header-cell *matHeaderCellDef> Symbol </th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>-->
+<!--      </ng-container>-->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr class="hover-row" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="this.onClickRow(row)"></tr>
+    </table>
+  </div>
+</div>
+
+<mat-paginator #paginator [length]="total" [pageSizeOptions]="[2, 4, 6, 15]" [pageSize]="15" (page)="changePage($event)" 
+showFirstLastButtons></mat-paginator>

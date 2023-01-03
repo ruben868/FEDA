@@ -1,0 +1,33 @@
+@import 'src/assets/variables';
+
+:host {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 50px minmax(0, 1fr);
+  overflow-y: auto;/*added*/
+
+  .action-bar {
+    display: grid;
+    padding: 5px;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+
+    border-bottom: 1px solid #56242A;
+
+    .title {
+      align-self: center;
+      @extend %action-bar-title;
+    }
+
+    .actions {
+      display: flex;
+    }
+  }
+
+  .main-pane {
+    display: grid;
+    overflow-y: scroll;/*added*/
+    //min-width: 0px;
+    //max-height: 100%;
+  }
+}

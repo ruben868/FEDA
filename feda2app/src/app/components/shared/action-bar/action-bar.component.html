@@ -1,0 +1,14 @@
+<div class="title">
+    <span *ngFor="let t of titles; let i=index"> {{t}}  <span *ngIf="i+1 < this.titles.length "> > </span> </span>
+  </div>
+  <div class="button-set">
+    <button mat-button *ngIf="this.isShow('save')" (click)="onSave()"><i class="material-icons">save</i>Guardar</button>
+    <button mat-button *ngIf="this.isShow('refresh')" (click)="onRefresh()"><i class="material-icons">refresh</i>Actualizar</button>
+    <button mat-button *ngIf="this.isShow('new')"     (click)="onAdd()"><i class="material-icons">add</i>Nuevo</button>
+    <button mat-button *ngIf="this.isShow('exit')" (click)="onExit()"><i class="material-icons">exit_to_app</i>Salir</button>
+    <button mat-button *ngIf="this.isShow('send')" (click)="onSend()"><i class="material-icons">send</i>Enviar</button>
+  
+    <button mat-button *ngIf="this.isShow('check')" (click)="onApprove()"><i class="material-icons">check</i>Aprobar</button>
+    <button mat-button *ngIf="this.isShow('reject')" (click)="onReject()"><i class="material-icons">close</i>Rechazar</button>
+  </div>
+  

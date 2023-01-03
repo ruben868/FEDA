@@ -1,0 +1,172 @@
+
+<div class="action-bar">
+  <button mat-icon-button color="accent" aria-label="Actualizar" (click)="this.goBack()">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+
+  <span class="title">
+    PRESUNTOS NÚMEROS DE EXTORSIÓN Y FRAUDE TELEFÓNICO - CARGA DE ARCHIVO - PERIODO {{ this.weekLabel }} - {{this.safeYear}}
+  </span>
+  <div class="actions">
+
+  </div>
+</div>
+
+<mat-tab-group class="mytab">
+  <mat-tab label="FORMATO ELECTRÓNICO">
+    <div class="main-pane">
+      <!-- INFORMACIÓN DEL PERIODO ---------------------------------->
+      <mat-card class="main-card" style="height:100px;">
+        <span style="grid-column: 1/-1; margin-bottom: 20px;" class="title-glo-02">INFORMACIÓN DEL PERIODO</span>
+
+        <!-- PRIMER FILA INFORMACIÓN GENERAL DE PERIODOS ---------------------------------->
+        <div class = "two-row-info">
+          <span>PERIODO</span>
+          <span>{{this.weekLabel}}</span>
+        </div>
+        <div class = "two-row-info">
+          <span>DEL</span>
+          <span>{{this.start | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class = "two-row-info">
+          <span>AL</span>
+          <span>{{this.end | date:'dd/MM/yyyy'}}</span>
+        </div>
+      </mat-card>
+
+      <!-- COMPONENTES PARA CARGAR LA INFORMACIÓN ---------------------------------->
+      <div style="grid-column: 2; margin-top: 20px;"  *ngIf="this.processStatus === 'pendiente' && this.canLoadFile">
+        <div class="load-button" *ngIf="this.estatusCarga == 0" >
+          <button mat-button  (click)="onLoadFile()">
+            <mat-icon>file_upload</mat-icon>
+            CARGAR ARCHIVO
+          </button>
+        </div>
+
+        <span class="title-loc-01" style="grid-column: 2/-1; margin-top: 10px; margin-bottom: 10px;" *ngIf="this.showNetworkError == 1">Error de Red. Valide su conexión de red y vuelva a intentarlo. </span>
+
+        <br />
+
+        <div class="estatus-cargando" *ngIf="this.estatusCarga == 1">
+          <mat-progress-spinner
+
+            diameter="50"
+            [color]="'primary'"
+            [mode]="'indeterminate'"
+          >
+          </mat-progress-spinner>
+
+          <span class="title-loc-01" style="grid-column: 2/-1" >Espere por favor. NO CIERRE ESTA VENTANA.</span>
+        </div>
+
+        <div class="load-button" >
+          <load-excel-ext
+            #loadExcel01
+            (estadoCarga)="this.onEstadoCarga($event)"
+            (fileInfo)="this.onFileInfoResult($event)"
+            [periodoCarga]="this.periodoCarga" >
+          </load-excel-ext>
+        </div>
+
+        <br/>
+
+      </div>
+
+      <!-- PROCESO DEL ARCHIVO (EN EL SERVIDOR) --------------------------------------->
+      <mat-card class="main-card" style="height:100px;" *ngIf="this.processStatus === 'cargando'">
+        <div class="estatus-cargando" >
+          <mat-progress-spinner
+
+            diameter="50"
+            [color]="'primary'"
+            [mode]="'indeterminate'"
+          >
+          </mat-progress-spinner>
+
+          <span class="title-loc-01" style="grid-column: 2/-1">El archivo se está procesando. Ahora puede abandonar esta página. Cuando el proceso esté listo, podrá consultar el acuse de recibo de los datos</span>
+        </div>
+      </mat-card>
+
+      <!-- PROCESO DEL ARCHIVO (EN EL SERVIDOR) --------------------------------------->
+      <mat-card class="main-card"  *ngIf="this.processStatus === 'finalizado'">
+        <span class="title-loc-01">PROCESO FINALIZADO</span>
+
+        <span class="info-title">Fecha de carga:</span>
+        <span class="info-data">{{ this.periodoCarga.carga.fechaCarga | date: 'dd/MM/yyyy HH:mm'}}</span>
+
+        <span class="info-title">Cantidad de registros cargados:</span>
+        <span class="info-data">{{ this.periodoCarga.carga.proceso.registros}}</span>
+
+        <span class="info-title">Calificación:</span>
+        <span class="info-data">{{ this.periodoCarga.carga.proceso.calificacion}}</span>
+
+        <span class="info-title">Comprobante:</span>
+        <span class="info-data" >
+      <mat-icon >insert_drive_file</mat-icon>
+      <button mat-button color="primary" style="align-self: center" (click)="this.onDownloadComp()">Descargar comprobante</button>
+    </span>
+
+        <!--    <div class="estatus-finalizado">-->
+        <!--      <mat-progress-spinner-->
+        <!--        diameter="50"-->
+        <!--        [color]="'primary'"-->
+        <!--        [mode]="'determinate'"-->
+        <!--        [value]="100"-->
+        <!--      >-->
+        <!--      </mat-progress-spinner>-->
+        <!--      <span class="title-loc-01">Proceso finalizado</span>-->
+        <!--    </div>-->
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="SERVICIO WEB">
+    <div class="main-pane">
+      <!-- INFORMACIÓN DEL PERIODO ---------------------------------->
+      <mat-card class="main-card" style="height:100px;">
+        <span style="grid-column: 1/-1; margin-bottom: 20px;" class="title-glo-02">INFORMACIÓN DEL PERIODO</span>
+
+        <!-- PRIMER FILA INFORMACIÓN GENERAL DE PERIODOS ---------------------------------->
+        <div class = "two-row-info">
+          <span>PERIODO</span>
+          <span>{{this.weekLabel}}</span>
+        </div>
+        <div class = "two-row-info">
+          <span>DEL</span>
+          <span>{{this.start | date:'dd/MM/yyyy'}}</span>
+        </div>
+        <div class = "two-row-info">
+          <span>AL</span>
+          <span>{{this.end | date:'dd/MM/yyyy'}}</span>
+        </div>
+      </mat-card>
+
+      <!-- PROCESO DEL ARCHIVO (EN EL SERVIDOR) --------------------------------------->
+      <mat-card class="main-card" >
+        <span class="title-loc-01" style="grid-column: 1 / -1;">RESUMEN DE LA CARGA DE INFORMACIÓN</span>
+
+        <span class="info-title">Fecha de carga:</span>
+        <span class="info-data" *ngIf="!this._.isNil(this.ws_fechaCarga)">{{ this.ws_fechaCarga | date: 'dd/MM/yyyy HH:mm'}}</span>
+        <span class="info-data" *ngIf="this._.isNil(this.ws_fechaCarga)"> - </span>
+
+        <span class="info-title">Cantidad de registros cargados:</span>
+        <span class="info-data" *ngIf="!this._.isNil(this.ws_registros)">{{ this.ws_registros}}</span>
+        <span class="info-data" *ngIf="this._.isNil(this.ws_registros)"> - </span>
+
+        <span class="info-title">Calificación:</span>
+        <span class="info-data" *ngIf="!this._.isNil(this.ws_calificacion)">{{ this.ws_calificacion}}</span>
+        <span class="info-data" *ngIf="this._.isNil(this.ws_calificacion)"> - </span>
+
+        <span class="info-title">Comprobante:</span>
+        <span class="info-data" *ngIf="!this._.isNil(this.ws_comprobante)">
+          <mat-icon >insert_drive_file</mat-icon>
+          <button mat-button color="primary" style="align-self: center" (click)="this.onDownloadCompWsCarga()">Descargar comprobante</button>
+        </span>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<!--<div class="main-pane">-->
+<!--</div>-->
+
+

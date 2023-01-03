@@ -1,0 +1,20 @@
+
+
+:host {
+  display: grid;
+
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+
+  .main-content {
+    align-self: center;
+    opacity: 1;
+    align-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+    color: gainsboro;
+  }
+}

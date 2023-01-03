@@ -1,0 +1,11 @@
+
+<div *ngFor="let i of this.getAllAuthNavs()" class="nav-item">
+  <div class="nav-item-content" (click)="this.seletectNavItem($event, i)" [ngClass]="i.cssClass">
+<!--    <span class="material-icons">-->
+<!--      {{i.iconName}}-->
+<!--    </span>-->
+<!--    <mat-icon class="mat-icon-rtl-mirror" svgIcon="thumb-up"></mat-icon>-->
+    <mat-icon>{{i.iconName}}</mat-icon>
+    <span class="title">{{i.name}}</span>
+  </div>
+</div>

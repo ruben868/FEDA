@@ -1,0 +1,22 @@
+<div class="action-bar">
+  <span class="title">
+    PLANTILLAS
+  </span>
+  <div class="actions">
+    <button mat-icon-button color="accent" aria-label="Actualizar" (click)="this.onActualizar()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="main-pane">
+  <app-plantilla-row
+    *ngFor="let item of this.plantillas"
+    [plantilla]="item"
+  >
+  </app-plantilla-row>
+<!--  <app-fila-carga-pend-->
+<!--    *ngFor="let item of this.periodoCargaList"-->
+<!--    [pc]="item" >-->
+<!--  </app-fila-carga-pend>-->
+</div>

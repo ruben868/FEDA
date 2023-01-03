@@ -1,0 +1,37 @@
+@import 'src/assets/variables';
+
+:host {
+  display: grid;
+  overflow: hidden;
+  .formcont {
+    @extend %main-content-grid;
+
+    .action-bar {
+      @extend %main-content-actionbar;
+
+      .title {
+        @extend %action-bar-title;
+        align-self: center;
+      }
+
+      .actions {
+        display: flex;
+      }
+    }
+
+    .main-pane {
+      display: grid;
+      @extend %main-content-pane;
+
+      form {
+        display: grid;
+      }
+    }
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+  grid-gap: 20px;
+}

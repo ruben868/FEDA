@@ -1,0 +1,38 @@
+
+
+<input #loadFile id="fileUpload" type="file" (change)="this.onFileChange($event)" multiple="false" style="display:none;" accept=".xlsx"/>
+
+<!-- MENSAJES DE LOG -->
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Pre validación de plantilla
+      </mat-panel-title>
+      <mat-panel-description>
+        <span *ngIf="this.validation == 0">Esperando achivo</span>
+        <span *ngIf="this.validation == 1" style="color: green;">Validación correcta</span>
+        <span *ngIf="this.validation == 2" style="color: darkred;">Errores en la validación</span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="validation-log" *ngFor="let item of this.validationLog">
+      <ng-container>
+        <mat-icon *ngIf="item.validationResult == 1" >check_circle</mat-icon>
+        <mat-icon *ngIf="item.validationResult == 2" >warning</mat-icon>
+      </ng-container>
+      <span>{{item.validationType}}</span>
+      <span>{{item.msg}}</span>
+    </div>
+
+<!--    <mat-form-field>-->
+<!--      <mat-label>First name</mat-label>-->
+<!--      <input matInput>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field>-->
+<!--      <mat-label>Age</mat-label>-->
+<!--      <input matInput type="number" min="1">-->
+<!--    </mat-form-field>-->
+  </mat-expansion-panel>
+</mat-accordion>

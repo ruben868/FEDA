@@ -1,0 +1,15 @@
+:host {
+  display: grid;
+  grid-template-rows: 40px minmax(0px,1fr);
+  grid-template-columns: minmax(auto,1fr);
+
+  .content {
+    display: grid;
+    grid-template-columns: minmax(auto,2fr);
+    
+    grid-template-rows: minmax(auto,1fr);
+
+    background-color: #0b231e;
+
+  }
+}

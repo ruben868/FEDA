@@ -1,0 +1,24 @@
+@import "~src/assets/app-fonts";
+
+:host {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-bottom: 1px solid gainsboro;
+  align-items: center;
+
+  .title {
+    padding-left: 10px;
+    @extend %title-bar;
+  }
+
+  .button-set {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    > * {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}

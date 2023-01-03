@@ -1,0 +1,54 @@
+// COLORES
+$guin01: #9D2449;
+$guin02: #621132;
+$guin03: #56242A;
+$guin04: #4E232E;
+$black01: #19191a;
+$dorado01: #D4C19C;
+$dorado02: #B38E5D;
+
+// FUENTES
+$action-font: 10pt arial;
+
+// GLOBAL EXTENDED
+%main-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 50px minmax(0, 1fr);
+  overflow-y: auto;/*added*/
+}
+
+%main-content-actionbar {
+  display: grid;
+  padding: 5px;
+  box-sizing: border-box;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+
+  border-bottom: 1px solid #56242A  ;
+}
+
+%main-content-pane {
+  display: grid;
+  overflow-y: scroll;/*added*/
+}
+
+%action-bar-title {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 12pt;
+  color: $guin04;
+}
+
+%title-01 {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 14pt;
+  color: $guin04;
+}
+
+%title-02 {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 12pt;
+  color: $guin04;
+}

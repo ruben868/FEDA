@@ -1,0 +1,38 @@
+
+$font-fam: arial;
+
+$title-01: 14pt;
+
+$action-bar-font-size: 10px;
+$action-bar-font-color: gray;
+
+%title-bar {
+  font-family: $font-fam;
+  color: black;
+  font-size: 12pt;
+}
+
+%side-nav-item {
+  font-family: $font-fam;
+  color: black;
+  font-size: 10pt !important;
+  font-weight: bold;
+}
+
+%title-01 {
+  font-family: $font-fam;
+  color: black;
+  font-size: 12pt !important;
+  font-weight: bold;
+}
+
+%title-02 {
+  font-family: $font-fam;
+  color: black;
+  font-size: 12pt !important;
+  font-weight: bold;
+}
+
+%title-03 {
+
+}

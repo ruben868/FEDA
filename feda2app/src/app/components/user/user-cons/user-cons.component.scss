@@ -1,0 +1,56 @@
+@import 'src/assets/variables';
+
+:host {
+  @extend %main-content-grid;
+
+  .action-bar {
+    @extend %main-content-actionbar;
+
+    .title {
+      @extend %action-bar-title;
+      align-self: center;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+
+  .main-pane {
+    display: grid;
+    @extend %main-content-pane;
+
+    form {
+      display: grid;
+    }
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+  grid-gap: 20px;
+}
+
+table {
+  width: 100%;
+
+  //tr {
+  //  &:hover {
+  //    background: whitesmoke;
+  //  }
+  //  cursor: pointer;
+  //}
+}
+
+.hover-row {
+  &:hover {
+    background: whitesmoke;
+    cursor: pointer;
+  }
+}
+
+//tr.example-element-row:not(.example-expanded-row):hover {
+//  background: whitesmoke;
+//}

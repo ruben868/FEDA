@@ -1,0 +1,31 @@
+<div class="action-bar">
+  <span class="title">
+    CARGA DE ARCHIVO
+  </span>
+  <div class="actions">
+    <button mat-icon-button color="accent" aria-label="Actualizar" (click)="this.onActualizar()" [disabled]="this.refreshButtonDisabled">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+</div>
+
+<!-- <div class="box">
+  <div class="container-4">
+    <input type="search" id="search" placeholder="Search..." />
+    <button class="icon"><i class="fa fa-search"></i></button>
+  </div>
+</div> -->
+
+<!--<div class="row-title">-->
+<!--  <span class="title periodo-title">  PERIODO </span>-->
+<!--  <span class="title periodo-title">  FECHA LÍMITE </span>-->
+<!--  <span class="title periodo-title">  FORMATO ELECTRÓNICO </span>-->
+<!--  <span class="title periodo-title">  SERVICIO WEB </span>-->
+<!--</div>-->
+
+<div class="main-pane">
+  <app-fila-carga-pend
+    *ngFor="let item of this.periodoCargaList"
+    [pc]="item" >
+  </app-fila-carga-pend>
+</div>

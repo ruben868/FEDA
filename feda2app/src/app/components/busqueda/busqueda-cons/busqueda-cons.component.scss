@@ -1,0 +1,181 @@
+section.search__container {
+
+  // display: flex;
+  // justify-content: space-between;
+  display: grid;
+  justify-items: center;
+  flex-wrap: space-evenly;
+  // width: 40%;
+  margin: 1rem;
+  // align-content: center;
+  padding: 1rem;
+  // background: rgb(250 246 246 / 16%);
+  border-radius: 0.5rem;
+
+.search__name {
+  display: grid;
+  justify-items: center;
+}
+
+  label {
+    color:#fdfdfd;
+    margin-bottom: .25rem;
+    display: block;
+  }
+
+  input {
+    width: 325px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #202020;
+
+  .search__input {
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 150;
+  }
+
+  }
+
+  // input {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 110%;
+  //   padding: 1rem 3.75rem;
+  //   font-size: 0.75rem;
+  //   font-weight: 150;
+  //   line-height: 1.3;
+  //   background-color: #fffefe;
+  //   border: 1px solid;
+  //   border-radius: .20rem;
+  //   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    
+  //   &:focus {
+  //     outline: none;
+  //   }
+  // }
+
+}
+
+// @media screen and (max-width: 768px){
+//   section.search__container {
+//     flex-direction: column;
+
+//     .search__name{
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       width: 50%;
+//       margin-bottom: 1rem;
+//       // display: grid;
+//       // justify-items: center;
+//     }
+//   }
+// }
+
+@import 'src/assets/variables';
+@import 'src/app/components/busqueda/gridspec';
+// $row-header-height: 40px;
+
+:host {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 50px  minmax(0, 1fr);
+  overflow-y: auto;/*added*/
+
+  .action-bar {
+    display: grid;
+    padding: 5px;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+
+    border-bottom: 1px solid #56242A;
+
+    .title {
+      display: grid;
+      justify-items: center;
+      align-self: center;
+      @extend %action-bar-title;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+
+
+  // .title{
+  //   color: rgb(109, 109, 109);
+  //   font-size: 17px;
+  //   justify-content: center;
+  //   }
+
+  // .subtitle{
+  //   color: rgb(0, 0, 0);
+  //   font-size: 25;
+  //   align-content: flex-start;
+  //   }
+
+
+}
+
+
+.main-cont {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+
+
+  // CONTENEDOR DE "TARJETA"
+  .result-cont {
+    display: grid;
+    justify-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-content: center;
+
+    
+    
+    // TARJETA - ITEM DE RESULTADO COMO TAL DE LA BUSQUEDA
+    .example-card {
+      margin-bottom: 25px;
+      min-width: 600px;
+      max-width: 630px;
+      font-style: italic;
+      display: flex;
+      flex-direction: column;
+
+
+      .row-cont{
+        justify-self: center;
+        display: flex;
+        flex-wrap: space-evenly;
+        width: 100%;
+        margin-bottom: 5px;
+      
+      
+        .row-item {
+          align-self: flex-start;
+          flex-grow: 3;
+          flex-wrap: space-evenly;
+          padding:2.5px;
+      
+        }
+      }
+    }
+
+  }// FIN CONTENEDOR DE TARJETAS (CARD-CONT)
+
+  .grid{
+    display: grid;
+
+    grid-auto-columns: 100%;
+    grid-auto-rows: 50%;
+    // text-align:center;
+    // font-size:1rem;
+  }
+  
+}
