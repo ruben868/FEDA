@@ -1,0 +1,7 @@
+
+const commonService = {
+
+  hasIdProperty: function () {
+
+  }
+};
