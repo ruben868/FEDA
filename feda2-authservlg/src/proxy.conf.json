@@ -1,0 +1,15 @@
+
+{
+    "/feda2-auth/api/*": {
+      "target": "http://localhost:4500",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+            "^/feda2-auth": ""
+        }
+    }
+  }
+  
+  
+  

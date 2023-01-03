@@ -1,0 +1,26 @@
+
+
+<form [formGroup]="form" (ngSubmit)="this.onSubmit()" class="main-pane">
+
+  <br/>
+  <mat-form-field appearance="outline" style="grid-column: 1 / -1">
+    <mat-label>Contraseña</mat-label>
+    <input matInput placeholder="Contraseña" formControlName="pwd" [minlength]="8">
+    <mat-hint>Mínimo 8 caractéres</mat-hint>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" style="grid-column: 1 / -1">
+    <mat-label>Confirmar contraseña</mat-label>
+    <input matInput placeholder="Confirmar contraseña" formControlName="pwdc" (keyup.enter)="this.onSubmit()" [minlength]="8">
+    <mat-hint>Debe ser la misma contraseña</mat-hint>
+  </mat-form-field>
+
+  <br />
+  <span *ngIf="this.showErrMsg" style="grid-column: 1 / -1">Verifique que las contraseñas sean las mismas y que tengan una longitud mayor o igual a 8 caracteres</span>
+
+  <button mat-flat-button color="primary" class="pwd-btn" type="submit"  >
+    Establecer contraseña
+  </button>
+</form>
+

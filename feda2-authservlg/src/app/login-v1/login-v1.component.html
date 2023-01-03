@@ -1,0 +1,61 @@
+
+<div class="form-main">
+  <span class="app-name">{{this.appName}}</span>
+  <mat-card class="form-cont" [formGroup]="form" *ngIf="!this.showError">
+
+    <div class="logo">
+      <img src="../../assets/SESNSP%20-%20Solo.png" class="spinner" />
+    </div>
+    <div class="title-cont">
+      <span class="title"><p>Iniciar sesión</p></span>
+      <img *ngIf="this.isLoading" src="../../assets/Spinner-0.9s-200px.gif" class="spinner" />
+    </div>
+    <mat-form-field appearance="outline" class="span-01">
+      <mat-label>Correo</mat-label>
+      <input matInput placeholder="Correo electrónico" formControlName="mail" oninput="this.value = this.value.toLowerCase()">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="span-01">
+      <mat-label>Contraseña</mat-label>
+      <input matInput placeholder="Contraseña" type="password" formControlName="pwd" (keyup.enter)="onSubmit()">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+
+    <!--  <span class="span-01 ref-font" >¿Olvidó su contraseña?</span>-->
+
+<!--    <span class="span-01 ref-font" style="color: red;" >-->
+<!--    <p *ngIf="!this.hasError">&nbsp;</p>-->
+<!--    <p *ngIf="this.hasError">Usuario o contraseña incorrectas</p>-->
+<!--    </span>-->
+    <div class="error-cont span-01">
+      <span  *ngIf="this.hasError" class="ref-font">Usuario o contraseña incorrecto</span>
+    </div>
+<!--    <div class="link-cont span-01">-->
+<!--      <a> Solicitar registro</a>-->
+<!--    </div>-->
+<!--    <div class="link-cont span-01">-->
+<!--      <a> ¿Olvidó su contraseña?</a>-->
+<!--    </div>-->
+
+    <!--  <div class="btn-cont">-->
+    <!--    <div class="spinner">-->
+    <!--      <img src="../../../assets/Spinner-0.9s-200px.gif" />-->
+    <!--    </div>-->
+
+    <!--  </div>-->
+
+    <button mat-flat-button color="primary" class="pwd-btn" (click)="onSubmit()" [disabled]="this.isLoading || !this.isFormValid">
+      Iniciar Sesión
+    </button>
+  </mat-card>
+
+  <mat-card class="form-cont" [formGroup]="form" *ngIf="this.showError">
+
+    <div class="logo">
+      <p>Ha ocurrido un error inesperado. Regrese a su aplicación e intentelo más tarde</p>
+    </div>
+
+  </mat-card>
+</div>
+

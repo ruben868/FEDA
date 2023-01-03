@@ -1,0 +1,68 @@
+
+<div class="form-main">
+  <span class="app-name">{{this.appName}}</span>
+  <mat-card class="form-cont" [formGroup]="form" *ngIf="!this.showError && this.hasInit">
+
+    <div class="logo">
+      <img src="../../../assets/SESNSP%20-%20Solo.png" class="spinner" />
+    </div>
+    <div class="title-cont">
+      <span>Activación de la cuenta</span>
+<!--      <span class="title"><p>Activación de la cuenta</p></span>-->
+<!--      <img *ngIf="this.isLoading" src="../../../assets/Spinner-0.9s-200px.gif" class="spinner" />-->
+    </div>
+
+    <span class="span-01">
+      {{this.mail}}
+    </span>
+
+    <ng-container *ngIf="!this.codeOk">
+      <mat-form-field appearance="outline" class="span-01">
+        <mat-label>Código de activación</mat-label>
+        <input matInput placeholder="PIN" formControlName="pin" (keyup.enter)="onSubmit()" [maxLength]="6">
+        <mat-hint>Código de 6 caractéres</mat-hint>
+      </mat-form-field>
+
+      <span  *ngIf="this.hasCodigoIncorrecto" class="error-cont span-01">Código incorrecto</span>
+      <span  *ngIf="this.hasCodeSent" class="error-cont span-01">Se ha enviado un correo electrónico a su buzón con el código de activación</span>
+
+<!--      <span src="../../../assets/Spinner-0.9s-200px.gif" class="spinner" style="width: 40px;">&nbsp;</span>-->
+
+      <div style="display: inline-flex; flex-direction: row-reverse; align-items: center;" *ngIf="this.hasCodeSending">
+        <img  style="width: 30px; height: 30px;" src="../../../assets/Spinner-0.9s-200px.gif" class="spinner" />
+      </div>
+      <button mat-flat-button color="primary" style="margin-top: 10px;" class="pwd-btn" (click)="this.enviarCodigo()" [disabled]="this.disableEnviarCodigo" >
+        <span>Enviar código</span>
+      </button>
+
+
+      <div class="error-cont span-01">
+        <span  *ngIf="this.hasError" class="ref-font">Usuario o contraseña incorrecto</span>
+      </div>
+
+      <button mat-flat-button color="primary" class="pwd-btn" (click)="this.validarCodigo()" [disabled]="!this.isFormValid">
+        Validar código
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="this.codeOk" style="grid-column: 1 / -1;">
+      <app-csetpwd [invitationCode]="this.invitationCode" [pin]="this.pin" [url]="this.appUrl" ></app-csetpwd>
+    </ng-container>
+
+  </mat-card>
+
+  <mat-card *ngIf="!this.hasInit">
+    <br />
+    <img  style="width: 50px;" src="../../../assets/Spinner-0.9s-200px.gif" class="spinner" />
+    <br />
+  </mat-card>
+
+  <mat-card class="form-cont" [formGroup]="form" *ngIf="this.showError">
+
+    <div class="logo">
+      <p>Ha ocurrido un error inesperado. Regrese a su aplicación e intentelo más tarde</p>
+    </div>
+
+  </mat-card>
+</div>
+
